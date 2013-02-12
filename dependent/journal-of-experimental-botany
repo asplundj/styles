@@ -11,7 +11,7 @@
     </author>
     <category citation-format="author-date"/>
     <category field="biology"/>
-    <updated>2013-02-12T08:00:57+00:00</updated>
+    <updated>2013-02-12T12:01:46+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <macro name="editor-translator">
@@ -75,9 +75,12 @@
     <layout prefix="(" suffix=")" delimiter="; ">
       <group delimiter=", ">
         <text macro="author-short"/>
-        <date date-parts="year" variable="issued" font-style="normal">
-          <date-part name="year" font-style="normal"/>
-        </date>
+        <group>
+          <date date-parts="year" variable="issued" font-style="normal">
+            <date-part name="year" font-style="normal" suffix=""/>
+          </date>
+          <text variable="year-suffix" font-style="italic"/>
+        </group>
         <group>
           <label variable="locator" suffix="." form="short" strip-periods="true"/>
           <text variable="locator" prefix=" "/>
@@ -91,10 +94,13 @@
       <key variable="issued"/>
     </sort>
     <layout>
-      <text macro="author" suffix="." font-weight="bold"/>
-      <date variable="issued" font-weight="normal" prefix=" " suffix=".">
-        <date-part name="year"/>
-      </date>
+      <text macro="author" suffix=". " font-weight="bold"/>
+      <group suffix=".">
+        <date date-parts="year" variable="issued" font-style="normal">
+          <date-part name="year" font-style="normal"/>
+        </date>
+        <text variable="year-suffix" font-style="italic"/>
+      </group>
       <choose>
         <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
           <group suffix=".">
